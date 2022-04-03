@@ -41,6 +41,15 @@ test('能够复制数组对象', () => {
   expect(arr[1].list[2] === arr2[1].list[2]).toBeTruthy()
 })
 
+test('能够复制Symbol类型的key', () => {
+  const obj = {}
+  const sym = Symbol()
+  obj[sym] = 'test'
+  const obj2 = deepClone(obj)
+  expect(obj !== obj2).toBeTruthy()
+  expect(obj[sym] === obj2[sym]).toBeTruthy()
+})
+
 test('跳过原型属性', () => {
   const obj = Object.create({ name: 'aa' })
   obj.a = { b: { c: 1 } }
@@ -90,8 +99,10 @@ test('能够复制map', () => {
 test('环也可以复制', () => {
   const obj = { a: 1 }
   obj.self = obj
+  obj.b = 2
   const obj2 = deepClone(obj)
   expect(obj !== obj2).toBeTruthy()
   expect(obj.a === obj2.a).toBeTruthy()
+  expect(obj.b === obj2.b).toBeTruthy()
   expect(obj.self !== obj2.self).toBeTruthy()
 })
