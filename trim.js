@@ -11,14 +11,16 @@ function trim(str) {
 //       break
 //     }
 //   }
-//   for (let i = str.length; i > 0; i--) {
+//   for (let i = str.length - 1; i > 0; i--) {
 //     if (str[i] !== ' ') {
-//       end = i
+//       end = i + 1
 //       break
 //     }
 //   }
 
 //   return str.substring(start, end)
 // }
+
+console.log(trim('   a  b    '))
 
 console.log(trim('   a  b c '))
