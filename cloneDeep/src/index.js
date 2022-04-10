@@ -24,7 +24,7 @@ function getDist(source) {
     case '[object Object]':
       return {}
     case '[object Array]':
-      return {}
+      return []
     case '[object Date]':
       return new Date(source)
     case '[object RegExp]':
